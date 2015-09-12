@@ -128,6 +128,9 @@ module.exports = function (options) {
         log('\nfile.path: ' + file.path);
 
         var base = pathModule.dirname(file.path);
+        if(options.basePath){
+          base = options.basePath;
+        }
         replace(base, replaceCallback);
 
         function replaceCallback(code, data) {
@@ -158,3 +161,4 @@ module.exports = function (options) {
 
     return through.obj(transform);
 };
+
